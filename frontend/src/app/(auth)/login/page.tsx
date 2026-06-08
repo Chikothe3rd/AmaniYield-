@@ -75,7 +75,7 @@ export default function LoginPage() {
       </nav>
 
       <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-12">
-        <div className="w-full max-w-[420px] animate-technical-entry">
+        <div className="w-full max-w-md animate-technical-entry">
           
           <div className="mb-12">
             <p className="text-[10px] font-bold text-[#1B5E3B] uppercase tracking-[0.3em] mb-4">
@@ -140,14 +140,14 @@ export default function LoginPage() {
 
       {/* Decorative Technical Grid Lines */}
       <div className="fixed inset-0 pointer-events-none z-[-1] opacity-[0.03]">
-        <div className="absolute top-0 left-[20%] w-[1px] h-full bg-black" />
-        <div className="absolute top-0 left-[40%] w-[1px] h-full bg-black" />
-        <div className="absolute top-0 left-[60%] w-[1px] h-full bg-black" />
-        <div className="absolute top-0 left-[80%] w-[1px] h-full bg-black" />
-        <div className="absolute top-[20%] left-0 w-full h-[1px] bg-black" />
-        <div className="absolute top-[40%] left-0 w-full h-[1px] bg-black" />
-        <div className="absolute top-[60%] left-0 w-full h-[1px] bg-black" />
-        <div className="absolute top-[80%] left-0 w-full h-[1px] bg-black" />
+        <div className="absolute top-0 left-[20%] w-px h-full bg-black" />
+        <div className="absolute top-0 left-[40%] w-px h-full bg-black" />
+        <div className="absolute top-0 left-[60%] w-px h-full bg-black" />
+        <div className="absolute top-0 left-[80%] w-px h-full bg-black" />
+        <div className="absolute top-[20%] left-0 w-full h-px bg-black" />
+        <div className="absolute top-[40%] left-0 w-full h-px bg-black" />
+        <div className="absolute top-[60%] left-0 w-full h-px bg-black" />
+        <div className="absolute top-[80%] left-0 w-full h-px bg-black" />
       </div>
 
     </div>

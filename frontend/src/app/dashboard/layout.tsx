@@ -54,7 +54,7 @@ function Sidebar() {
   }
 
   return (
-    <aside className="w-[280px] bg-white border-r border-[#EEEEEE] flex flex-col min-h-screen">
+    <aside className="w-64 bg-white border-r border-[#EEEEEE] flex flex-col min-h-screen">
       {/* Brand & Protocol */}
       <div className="p-8 border-b border-[#EEEEEE]">
         <Link href="/" className="flex items-center gap-3">
@@ -62,10 +62,10 @@ function Sidebar() {
           <span className="text-xs font-black tracking-tighter uppercase">AmaniYield</span>
         </Link>
         <div className="mt-6 flex items-center gap-2">
-           <span className="text-[9px] font-bold text-[#1B5E3B] tracking-[0.2em] border border-[#EEEEEE] px-1.5 py-0.5 rounded-[2px] uppercase">
+           <span className="text-[9px] font-bold text-[#1B5E3B] tracking-[0.2em] border border-[#EEEEEE] px-1.5 py-0.5 rounded-xs uppercase">
              [ PROTOCOL : {isInstitutional ? 'GOV' : isOfficer ? 'FLD' : 'BNF'} ]
            </span>
-           <span className="text-[9px] font-bold text-[#888888] tracking-[0.1em] uppercase italic">
+           <span className="text-[9px] font-bold text-[#888888] tracking-widest uppercase italic">
              v.26.4
            </span>
         </div>
@@ -87,7 +87,7 @@ function Sidebar() {
               }`}
             >
               <div className="flex items-center justify-between">
-                <span className={`text-[11px] font-bold tracking-[0.05em] uppercase ${isActive ? 'text-[#1B5E3B]' : 'text-[#888888] group-hover:text-[#1A1A1A]'}`}>
+                <span className={`text-[11px] font-bold tracking-wider uppercase ${isActive ? 'text-[#1B5E3B]' : 'text-[#888888] group-hover:text-[#1A1A1A]'}`}>
                   {item.label}
                 </span>
                 <span className="text-[8px] font-bold text-[#CCCCCC] uppercase tracking-tighter">{item.tag}</span>
@@ -99,7 +99,7 @@ function Sidebar() {
 
       {/* User Session Protocol */}
       <div className="p-6 border-t border-[#EEEEEE] bg-[#FDFDFC]">
-        <div className="p-4 border border-[#EEEEEE] rounded-[2px] space-y-3">
+        <div className="p-4 border border-[#EEEEEE] rounded-xs space-y-3">
           <div>
             <p className="text-[8px] font-bold text-[#888888] uppercase tracking-widest">Active User</p>
             <p className="text-[11px] font-bold text-[#1A1A1A] mt-1 truncate">{user?.phoneNumber || 'SESSION_01'}</p>

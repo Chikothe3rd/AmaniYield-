@@ -34,7 +34,7 @@ export default function YouthDashboard() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full text-left px-4 py-3 rounded-lg text-[10px] font-bold uppercase tracking-[0.1em] transition-all flex items-center gap-3 ${
+              className={`w-full text-left px-4 py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all flex items-center gap-3 ${
                 activeTab === tab.id ? 'bg-[#1A1A1A] text-white shadow-lg' : 'text-[#888888] hover:bg-[#F9F9F9]'
               }`}
             >
@@ -144,16 +144,16 @@ function OnboardingView() {
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <label className="text-[9px] font-bold text-[#888888] uppercase tracking-widest">Full Name</label>
-            <input type="text" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
+            <input type="text" placeholder="Full Name" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
           </div>
           <div className="space-y-1.5">
             <label className="text-[9px] font-bold text-[#888888] uppercase tracking-widest">Phone Number</label>
-            <input type="text" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
+            <input type="text" placeholder="Phone Number" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
           </div>
         </div>
         <div className="space-y-1.5">
           <label className="text-[9px] font-bold text-[#888888] uppercase tracking-widest">Farm Region</label>
-          <input type="text" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
+          <input type="text" placeholder="Farm Region" className="w-full bg-[#F9F9F9] border border-[#EEEEEE] rounded p-3 text-xs" />
         </div>
         <button className="w-full bg-[#1A1A1A] text-white py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#1B5E3B]">Register into SMS Network</button>
       </div>

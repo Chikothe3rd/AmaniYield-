@@ -55,7 +55,7 @@ export default function AdminDashboard() {
                    <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-emerald-500" /><span className="text-[9px] font-bold uppercase">Resource Viable</span></div>
                 </div>
              </div>
-             <div className="h-[600px] border border-[#EEEEEE] rounded-xl overflow-hidden shadow-2xl relative">
+             <div className="h-96 border border-[#EEEEEE] rounded-xl overflow-hidden shadow-2xl relative">
                 <MapDashboard />
              </div>
           </div>
@@ -78,7 +78,7 @@ function BroadcastPanel() {
         <div className="space-y-6">
           <div className="space-y-2">
             <label className="text-[9px] font-bold uppercase tracking-widest text-[#888888]">Select Region</label>
-            <select className="w-full bg-[#333] border border-[#444] p-4 rounded text-xs focus:border-[#1B5E3B] outline-none">
+            <select aria-label="Select Region" className="w-full bg-[#333] border border-[#444] p-4 rounded text-xs focus:border-[#1B5E3B] outline-none">
               <option>Southern Province</option>
               <option>Eastern Province</option>
               <option>Lusaka Central</option>

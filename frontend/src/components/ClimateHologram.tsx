@@ -183,8 +183,8 @@ export default function ClimateHologram() {
              <div className="w-12 h-12 border border-[#1B5E3B]/40 rounded-full animate-ping" />
              <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-1 h-1 bg-[#1B5E3B] rounded-full" />
-                <div className="absolute w-6 h-[1px] bg-[#1B5E3B]" />
-                <div className="absolute h-6 w-[1px] bg-[#1B5E3B]" />
+                <div className="absolute w-6 h-px bg-[#1B5E3B]" />
+                <div className="absolute h-6 w-px bg-[#1B5E3B]" />
              </div>
              <div className="absolute top-8 left-8 bg-[#1A1A1A] px-2 py-1 border border-[#333] rounded shadow-xl">
                 <p className="text-[8px] font-mono text-emerald-400 font-bold whitespace-nowrap">FIX: {coords.lat.toFixed(2)} / {coords.lon.toFixed(2)}</p>
