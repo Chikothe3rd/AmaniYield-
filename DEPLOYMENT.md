@@ -2,14 +2,30 @@
 
 ## Deployment Architecture
 
-AmaniYield is a full-stack application designed for production deployment on Vercel:
+AmaniYield is a full-stack application that can be deployed on multiple platforms:
 
-- **Frontend**: Next.js 16.2.4 deployed to Vercel
-- **Backend**: Express.js API (can be deployed separately on Railway, Heroku, or as serverless functions)
+- **Frontend**: Next.js 16.2.4
+- **Backend**: Express.js API with TypeScript
 - **Database**: PostgreSQL with Prisma ORM
 - **Mobile**: React Native screens (separate deployment)
 
+### Supported Platforms
+
+1. **Vercel** (Recommended for Frontend) - Native Next.js support
+2. **Render** (Full Stack) - Complete monorepo support with native YAML configuration
+3. **Railway** - Good alternative for backend + database
+4. **AWS/GCP/Azure** - For enterprise deployments
+
 ## Prerequisites
+
+### For Render Deployment (Recommended)
+
+1. Render Account (https://render.com)
+2. GitHub repository connected to Render
+3. PostgreSQL database (auto-created by Render)
+4. Environment variables configured in Render dashboard
+
+### For Vercel Deployment
 
 1. Vercel Account (https://vercel.com)
 2. PostgreSQL database (e.g., from Railway, Supabase, or AWS RDS)
@@ -45,9 +61,105 @@ TWILIO_PHONE_NUMBER=+1234567890
 
 ## Deployment Steps
 
-### Option 1: Deploy to Vercel (Recommended)
+### Option 1: Deploy to Render (Recommended - Full Stack)
 
-#### Frontend Only
+Render provides native monorepo support and automatic database management.
+
+#### Prerequisites Checklist
+
+- ✅ `render.yaml` file exists in project root
+- ✅ GitHub repository connected to Render
+- ✅ All environment variables configured in Render dashboard
+
+#### Step-by-Step Deployment
+
+**1. Connect Repository to Render**
+
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Click "New+" → "Blueprint"
+3. Select "Deploy from a Git repository"
+4. Connect your GitHub repository
+5. Select the branch to deploy from (usually `main`)
+
+**2. Render Will Automatically**
+
+- Detect `render.yaml` configuration
+- Create frontend web service
+- Create backend web service
+- Provision PostgreSQL database
+- Configure environment variables
+
+**3. Set Environment Variables in Render Dashboard**
+
+For **Frontend Service**:
+
+```
+NODE_ENV=production
+NEXT_PUBLIC_API_URL=<backend-service-url>
+NEXT_PUBLIC_APP_NAME=AmaniYield
+BACKEND_API_URL=<backend-service-url>
+```
+
+For **Backend Service**:
+
+```
+NODE_ENV=production
+PORT=3000
+JWT_SECRET=<your-secure-random-key>
+ALLOWED_ORIGINS=<frontend-service-url>
+DATABASE_URL=<auto-injected>
+WEATHER_API_KEY=<from-openweathermap>
+TWILIO_ACCOUNT_SID=<from-twilio>
+TWILIO_AUTH_TOKEN=<from-twilio>
+TWILIO_PHONE_NUMBER=<your-twilio-number>
+LOG_LEVEL=info
+```
+
+**4. Deploy**
+
+- Click "Deploy" in Render dashboard
+- Monitor build progress in real-time
+- Check logs for any errors
+- Services will be automatically available at provided URLs
+
+**5. Verify Deployment**
+
+```bash
+# Test frontend health
+curl https://your-frontend.onrender.com
+
+# Test backend health
+curl https://your-backend.onrender.com/api/health
+```
+
+#### Troubleshooting Render Deployment
+
+**Build fails with "next is not recognized"**
+
+- Check that `npm install` is included in build command
+- Verify Node.js version is 20.9.0 or higher
+
+**Environment variables undefined**
+
+- Confirm all variables are set in Render dashboard
+- Variables prefixed with `NEXT_PUBLIC_` must be visible to frontend
+- Use `sync: false` in render.yaml for sensitive values
+
+**Database connection failed**
+
+- Render injects DATABASE_URL automatically
+- Check backend logs: `psql: connection refused`
+- Verify PostgreSQL service is running
+
+**Deployment times out**
+
+- Backend build might take 5-10 minutes initially
+- Frontend build typically takes 2-3 minutes
+- Patient waiting usually resolves timeout issues
+
+---
+
+### Option 2: Deploy to Vercel (Recommended for Frontend Only)
 
 1. Connect your GitHub repository to Vercel
 2. Select the `frontend` directory as the root directory
@@ -84,6 +196,7 @@ npm start
 ```
 
 Configure these environment variables on your backend platform:
+
 - `DATABASE_URL`
 - `JWT_SECRET`
 - `WEATHER_API_KEY`
@@ -148,17 +261,20 @@ Configure structured logging in production:
 
 ```typescript
 // Example: Backend
-console.log(JSON.stringify({
-  timestamp: new Date().toISOString(),
-  level: 'info',
-  message: 'Event description',
-  userId: user.id
-}));
+console.log(
+  JSON.stringify({
+    timestamp: new Date().toISOString(),
+    level: "info",
+    message: "Event description",
+    userId: user.id,
+  }),
+);
 ```
 
 ## Database Backups
 
 Set up automated backups:
+
 - Railway: Automatic daily backups
 - Supabase: Free daily backups
 - AWS RDS: Configure backup retention policy
@@ -174,6 +290,7 @@ Set up automated backups:
 ### Database Rollback
 
 If migrations cause issues:
+
 ```bash
 npx prisma migrate resolve --rolled-back MIGRATION_NAME
 npx prisma migrate deploy
@@ -183,7 +300,8 @@ npx prisma migrate deploy
 
 ### Issue: API calls failing from frontend
 
-**Solution**: 
+**Solution**:
+
 - Verify `BACKEND_API_URL` environment variable is set
 - Check CORS configuration in backend
 - Verify authentication tokens are valid
@@ -191,6 +309,7 @@ npx prisma migrate deploy
 ### Issue: Database connection timeout
 
 **Solution**:
+
 - Check DATABASE_URL is correct
 - Verify database is accessible from Vercel IPs
 - Check connection pool settings
@@ -198,6 +317,7 @@ npx prisma migrate deploy
 ### Issue: Images not loading
 
 **Solution**:
+
 - Ensure image domains are whitelisted in next.config.mjs
 - Check CDN/blob storage permissions
 

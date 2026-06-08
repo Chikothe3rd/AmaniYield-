@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: amaniyield-frontend
+    runtime: node
+    buildCommand: npm install && npm run build --workspace=frontend
+    startCommand: npm start --workspace=frontend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.9.0
+      - key: NEXT_PUBLIC_API_URL
+        value: ${BACKEND_API_URL}
+      - key: NEXT_PUBLIC_APP_NAME
+        value: AmaniYield
+    autoDeploy: false
+    region: oregon
+
+  - type: web
+    name: amaniyield-backend
+    runtime: node
+    buildCommand: npm install && npm run build --workspace=backend && npm run prisma:generate -w backend
+    startCommand: npm start --workspace=backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 20.9.0
+      - key: PORT
+        value: 3000
+      - key: ALLOWED_ORIGINS
+        value: ${FRONTEND_URL}
+      - key: DATABASE_URL
+        fromDatabase:
+          name: amaniyield-db
+          property: connectionString
+      - key: JWT_SECRET
+        sync: false
+      - key: WEATHER_API_KEY
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_PHONE_NUMBER
+        sync: false
+      - key: LOG_LEVEL
+        value: info
+    autoDeploy: false
+    region: oregon
+
+databases:
+  - name: amaniyield-db
+    databaseName: amani_yield
+    region: oregon
+    plan: standard
