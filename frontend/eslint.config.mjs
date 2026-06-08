@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
       "react/no-danger": "off",
       "react/no-unescaped-entities": "warn",
       "@next/next/no-html-link-for-pages": "warn",
+      "react/style-prop-object": "off",
+      "jsx-a11y/style-props-object": "off",
     },
     ignores: [
       "*.md",

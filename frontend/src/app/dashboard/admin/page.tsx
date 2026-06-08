@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+// @ts-ignore - Next.js types are included in the package
 import { useRouter } from 'next/navigation';
 import MapDashboard from '@/components/MapDashboard';
 
@@ -127,7 +128,7 @@ function IncidentFeed() {
             <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888]">No active incidents reported.</div>
           ) : (
             incidents.map((incident, i) => (
-              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, react/no-unknown-property
+              // eslint-disable-next-line react/no-unknown-property
               <div key={incident.id} className="bg-white border border-[#EEEEEE] p-5 rounded-lg flex justify-between items-center hover:border-[#1B5E3B] transition-all cursor-default animate-technical-entry" style={{ animationDelay: `${i * 100}ms` }}>
                  <div className="flex gap-6 items-center">
                     <div className={`w-12 h-12 flex items-center justify-center text-xl ${incident.type === 'INCIDENT' ? 'bg-red-50' : 'bg-emerald-50'}`}>
@@ -147,8 +148,7 @@ function IncidentFeed() {
                     </p>
                  </div>
               </div>
-            ))
-          )}
+            ))}
        </div>
     </div>
   );

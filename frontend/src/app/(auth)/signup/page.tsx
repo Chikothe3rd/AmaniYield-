@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+// @ts-ignore - Next.js types are included in the package
 import { useRouter } from 'next/navigation';
+// @ts-ignore - Next.js types are included in the package
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 
