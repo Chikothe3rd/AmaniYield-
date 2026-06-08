@@ -32,10 +32,5 @@
   },
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/.next",
-  "framework": "nextjs",
-  "functions": {
-    "backend/src/server.ts": {
-      "maxDuration": 30
-    }
-  }
+  "framework": "nextjs"
 }
