@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Globe circle -->
+  <circle cx="32" cy="36" r="22" stroke="#1B5E3B" stroke-width="2.5" fill="#E8F5E9" opacity="0.5"/>
+  <ellipse cx="32" cy="36" rx="10" ry="22" stroke="#1B5E3B" stroke-width="1.5" fill="none"/>
+  <line x1="10" y1="36" x2="54" y2="36" stroke="#1B5E3B" stroke-width="1.5"/>
+  <!-- Sprout stem -->
+  <line x1="32" y1="36" x2="32" y2="10" stroke="#1B5E3B" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left leaf -->
+  <path d="M32 18 C26 12 18 14 20 20 C22 24 28 20 32 18Z" fill="#2E7D4F"/>
+  <!-- Right leaf -->
+  <path d="M32 14 C38 8 46 10 44 16 C42 20 36 16 32 14Z" fill="#1B5E3B"/>
+</svg>

@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --color-canvas: #FDFDFC;
+  --color-technical: #1A1A1A;
+  --color-accent: #1B5E3B;
+  --color-divider: #EEEEEE;
+  --color-muted: #888888;
+  --font-sans: var(--font-inter);
+}
+
+@theme inline {
+  --color-background: var(--color-canvas);
+  --color-foreground: var(--color-technical);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-canvas);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-canvas);
+  color: var(--color-technical);
+}
+
+/* ── Architectural Reveal ── */
+.reveal-slide {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Staggered Loading ── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-technical-entry {
+  animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* ── Global Dividers ── */
+.hairline-b { border-bottom: 1px solid var(--color-divider); }
+.hairline-r { border-right: 1px solid var(--color-divider); }
+.hairline-l { border-left: 1px solid var(--color-divider); }
+.hairline-t { border-top: 1px solid var(--color-divider); }
