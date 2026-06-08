@@ -68,10 +68,8 @@ const nextConfig = {
     optimizePackageImports: ['leaflet'],
   },
 
-  // Turbopack configuration
-  turbopack: {
-    root: process.cwd(),
-  },
+  // Disable Turbopack on unsupported Windows platforms and use Webpack instead
+  turbopack: false,
 
   // Build configuration
   compress: true,
