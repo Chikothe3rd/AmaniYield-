@@ -4,8 +4,6 @@
   command = "npm run build"
   publish = "frontend/.next"
   functions = "frontend/netlify/functions"
-# Redirect all routes to index for Next.js SPA behavior
-[[@@]]
 # Environment variables
 [context.production.environment]
   NODE_ENV = "production"
