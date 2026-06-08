@@ -18,7 +18,7 @@ const prisma = new client_1.PrismaClient();
 exports.prisma = prisma;
 const app = (0, express_1.default)();
 exports.app = app;
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT || 3000);
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,http://localhost:3001').split(',');
 // Security & CORS Configuration
