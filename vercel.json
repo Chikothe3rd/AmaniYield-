@@ -10,7 +10,7 @@
       "use": "@vercel/node@latest",
       "config": {
         "maxLambdaSize": "50mb",
-        "runtime": "nodejs18.x"
+        "runtime": "nodejs20.x"
       }
     }
   ],

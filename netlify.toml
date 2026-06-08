@@ -13,7 +13,7 @@
 
 # Environment variables
 [context.production]
-  environment = { NODE_ENV = "production", NODE_VERSION = "18.17.0" }
+  environment = { NODE_ENV = "production", NODE_VERSION = "20.14.0" }
 
 [context.deploy-preview]
   environment = { NODE_ENV = "development" }
