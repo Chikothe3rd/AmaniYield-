@@ -6,17 +6,17 @@
   functions = "frontend/netlify/functions"
 
 # Redirect all routes to index for Next.js SPA behavior
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
+[[@@]]
 # Environment variables
-[context.production]
-  environment = { NODE_ENV = "production", NODE_VERSION = "20.14.0" }
+[context.production.environment]
+  NODE_ENV = "production"
+  NODE_VERSION = "20.14.0"
 
 [context.deploy-preview]
   environment = { NODE_ENV = "development" }
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 # Cache settings
 [[headers]]
