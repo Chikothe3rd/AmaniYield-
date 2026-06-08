@@ -68,8 +68,12 @@ const nextConfig = {
     optimizePackageImports: ['leaflet'],
   },
 
+  // Turbopack configuration
+  turbopack: {
+    root: process.cwd(),
+  },
+
   // Build configuration
-  swcMinify: true,
   compress: true,
   generateEtags: true,
 
