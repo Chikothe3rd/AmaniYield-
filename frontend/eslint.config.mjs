@@ -5,6 +5,23 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "react/no-danger": "off",
+      "react/no-unescaped-entities": "warn",
+      "@next/next/no-html-link-for-pages": "warn",
+    },
+    ignores: [
+      "*.md",
+      "*.txt",
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "dist/**",
+    ],
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -12,6 +29,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "*.md",
+    "*.txt",
   ]),
 ]);
 

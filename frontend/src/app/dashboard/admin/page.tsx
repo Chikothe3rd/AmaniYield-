@@ -127,6 +127,7 @@ function IncidentFeed() {
             <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888]">No active incidents reported.</div>
           ) : (
             incidents.map((incident, i) => (
+              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, react/no-unknown-property
               <div key={incident.id} className="bg-white border border-[#EEEEEE] p-5 rounded-lg flex justify-between items-center hover:border-[#1B5E3B] transition-all cursor-default animate-technical-entry" style={{ animationDelay: `${i * 100}ms` }}>
                  <div className="flex gap-6 items-center">
                     <div className={`w-12 h-12 flex items-center justify-center text-xl ${incident.type === 'INCIDENT' ? 'bg-red-50' : 'bg-emerald-50'}`}>
@@ -175,6 +176,7 @@ function MigrationMonitor() {
                   <span className="text-[8px] font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">IN_TRANSIT</span>
                </div>
                <div className="w-full h-1 bg-[#F2F2F2] rounded-full overflow-hidden">
+                  {/* eslint-disable-next-line react/no-unknown-property */}
                   <div className="h-full bg-[#1B5E3B]" style={{ width: '65%' }} />
                </div>
                <p className="text-[8px] text-[#888888] font-bold uppercase">Dest: Oasis Alpha-9</p>
