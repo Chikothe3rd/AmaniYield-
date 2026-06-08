@@ -177,7 +177,7 @@ export default function ClimateHologram() {
          INTERACTIVE RETICLE - Dynamic positioning requires inline styles
          ────────────────────────────────────────────────────────── */}
       {isHovering && (
-        // eslint-disable-next-line react/no-unknown-property
+        // eslint-disable-next-line react/style-prop-object
         <div 
           className="absolute z-50 pointer-events-none transition-transform duration-75 ease-out"
           style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }}
@@ -196,6 +196,7 @@ export default function ClimateHologram() {
         </div>
       )}
 
+      {/* @ts-ignore - styled-jsx syntax */}
       <style jsx>{`
         @keyframes scan {
           0% { transform: translateY(0); opacity: 0; }

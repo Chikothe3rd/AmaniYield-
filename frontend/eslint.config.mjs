@@ -13,6 +13,8 @@ const eslintConfig = defineConfig([
       "@next/next/no-html-link-for-pages": "warn",
       "react/style-prop-object": "off",
       "jsx-a11y/style-props-object": "off",
+      "@next/next/no-css-tags": "off",
+      "@stylistic/indent": "off",
     },
     ignores: [
       "*.md",

@@ -115,41 +115,42 @@ function IncidentFeed() {
 
   return (
     <div className="space-y-6">
-       <div className="flex justify-between items-center border-b border-[#EEEEEE] pb-4">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[#888888]">[ LIVE_INCIDENT_STREAM ]</h3>
-          <span className="flex items-center gap-2 text-[9px] font-bold text-red-500 uppercase tracking-widest">
-            <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" /> Live Uplink
-          </span>
-       </div>
-       <div className="space-y-4">
-          {isLoading ? (
-            <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888] animate-pulse">Syncing with field nodes...</div>
-          ) : incidents.length === 0 ? (
-            <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888]">No active incidents reported.</div>
-          ) : (
-            incidents.map((incident, i) => (
-              // eslint-disable-next-line react/no-unknown-property
-              <div key={incident.id} className="bg-white border border-[#EEEEEE] p-5 rounded-lg flex justify-between items-center hover:border-[#1B5E3B] transition-all cursor-default animate-technical-entry" style={{ animationDelay: `${i * 100}ms` }}>
-                 <div className="flex gap-6 items-center">
-                    <div className={`w-12 h-12 flex items-center justify-center text-xl ${incident.type === 'INCIDENT' ? 'bg-red-50' : 'bg-emerald-50'}`}>
-                      {incident.type === 'INCIDENT' ? '⚠️' : '📡'}
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold uppercase">{incident.title}</p>
-                      <p className="text-[9px] text-[#888888]">REPORTED FROM: {incident.location}</p>
-                    </div>
-                 </div>
-                 <div className="text-right">
-                    <p className="text-[10px] font-mono font-bold tracking-tighter">
-                      {new Date(incident.timestamp).toLocaleTimeString()}
-                    </p>
-                    <p className="text-[8px] font-bold text-[#1B5E3B] uppercase tracking-widest mt-1">
-                      FIX: {incident.coords.lat.toFixed(2)} / {incident.coords.lng.toFixed(2)}
-                    </p>
-                 </div>
+      <div className="flex justify-between items-center border-b border-[#EEEEEE] pb-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-[#888888]">[ LIVE_INCIDENT_STREAM ]</h3>
+        <span className="flex items-center gap-2 text-[9px] font-bold text-red-500 uppercase tracking-widest">
+          <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" /> Live Uplink
+        </span>
+      </div>
+      <div className="space-y-4">
+        {isLoading ? (
+          <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888] animate-pulse">Syncing with field nodes...</div>
+        ) : incidents.length === 0 ? (
+          <div className="p-10 text-center text-[10px] font-bold uppercase tracking-widest text-[#888888]">No active incidents reported.</div>
+        ) : (
+          incidents.map((incident, i) => (
+            // eslint-disable-next-line react/style-prop-object
+            <div key={incident.id} className="bg-white border border-[#EEEEEE] p-5 rounded-lg flex justify-between items-center hover:border-[#1B5E3B] transition-all cursor-default animate-technical-entry" style={{ animationDelay: `${i * 100}ms` }}>
+              <div className="flex gap-6 items-center">
+                <div className={`w-12 h-12 flex items-center justify-center text-xl ${incident.type === 'INCIDENT' ? 'bg-red-50' : 'bg-emerald-50'}`}>
+                  {incident.type === 'INCIDENT' ? '⚠️' : '📡'}
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase">{incident.title}</p>
+                  <p className="text-[9px] text-[#888888]">REPORTED FROM: {incident.location}</p>
+                </div>
               </div>
-            ))}
-       </div>
+              <div className="text-right">
+                <p className="text-[10px] font-mono font-bold tracking-tighter">
+                  {new Date(incident.timestamp).toLocaleTimeString()}
+                </p>
+                <p className="text-[8px] font-bold text-[#1B5E3B] uppercase tracking-widest mt-1">
+                  FIX: {incident.coords.lat.toFixed(2)} / {incident.coords.lng.toFixed(2)}
+                </p>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
@@ -176,7 +177,7 @@ function MigrationMonitor() {
                   <span className="text-[8px] font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">IN_TRANSIT</span>
                </div>
                <div className="w-full h-1 bg-[#F2F2F2] rounded-full overflow-hidden">
-                  {/* eslint-disable-next-line react/no-unknown-property */}
+                  {/* eslint-disable-next-line react/style-prop-object */}
                   <div className="h-full bg-[#1B5E3B]" style={{ width: '65%' }} />
                </div>
                <p className="text-[8px] text-[#888888] font-bold uppercase">Dest: Oasis Alpha-9</p>
