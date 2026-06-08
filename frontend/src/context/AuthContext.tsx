@@ -7,6 +7,7 @@ interface AuthUser {
   id: string;
   phoneNumber: string;
   role: string;
+  region?: string;
 }
 
 interface AuthContextType {
@@ -30,12 +31,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const storedRole = localStorage.getItem('role');
     const storedUserId = localStorage.getItem('userId');
     const storedPhone = localStorage.getItem('phoneNumber');
+    const storedRegion = localStorage.getItem('region');
 
     if (storedToken && storedRole) {
       const hydratedUser = {
         id: storedUserId || '',
         phoneNumber: storedPhone || '',
         role: storedRole,
+        region: storedRegion || undefined,
       };
       setToken(storedToken);
       setUser(hydratedUser);
@@ -48,6 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('role', newUser.role);
     localStorage.setItem('userId', newUser.id);
     localStorage.setItem('phoneNumber', newUser.phoneNumber);
+    if (newUser.region) localStorage.setItem('region', newUser.region);
     setToken(newToken);
     setUser(newUser);
   };
